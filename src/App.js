@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import MyShows from "./components/MyShows";
+import Search from "./components/Search";
+import React from 'react'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [currentTab, setCurrentTab] = React.useState("Search");
+    const [myList, setMyList] = React.useState([]);
+
+    const myListElements = myList.map(show => {
+        return (<h5>{show.show.name}</h5>)
+    })
+
+    return (
+        <div className="App">
+
+            <nav>
+                <span onClick={() => { setCurrentTab("MyShows") }}>MyShows</span>
+                <span onClick={() => { setCurrentTab("Search") }}>Search</span>
+            </nav>
+
+            {currentTab === "MyShows" ?
+                <MyShows myList={myList} setMyList={setMyList} />
+                :
+                <Search myList={myList} setMyList={setMyList} />
+            }
+
+            {myListElements}
+        </div>
+    );
 }
 
 export default App;
