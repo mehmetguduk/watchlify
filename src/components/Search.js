@@ -11,18 +11,18 @@ export default function Search({ myList, setMyList }) {
         getSearch(searchValue).then(response => {
             setSearchResponse(response)
         })
+        // NEXT DAY'S NOTE :
+        // CHANGE THIS. DON'T IMEDIATELY SET OBJECT IN STATE
+        // CREATE AN ARRAY AND SET IT TO STATE WITH THE DATA VARIABLES YOU CAN USE IN THE PROJECT
+        // THEN FIX HANDLESHOWCLICK'S IF STATEMENT
     }
 
     function handleShowClick(event) {
         const showId = Number(event.target.id);
         const show = searchResponse.find(show => show.show.id === showId);
+
         setMyList(prevMyList => {
-
-            console.log(prevMyList) // [{show: {id: 1, name: "test"}, ...}]
-            console.log(show) // {show: {id: 1, name: "test"}}
-            console.log(prevMyList.includes(show)) // false
-
-            if (prevMyList.includes(show)) {
+            if (false) {
                 return prevMyList.filter(show => show.show.id !== showId)
             }
             else {

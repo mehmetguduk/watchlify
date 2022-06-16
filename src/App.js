@@ -1,6 +1,7 @@
 import MyShows from "./components/MyShows";
 import Search from "./components/Search";
 import React from 'react'
+import './style.scss'
 
 function App() {
     const [currentTab, setCurrentTab] = React.useState("Search");
